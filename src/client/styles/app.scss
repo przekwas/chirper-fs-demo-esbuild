@@ -1,19 +1,44 @@
-// Vaporwave Color Scheme
+$body-bg: #121212;
+$body-color: #e0e0e0;
+$primary: #ff6ad5; // Neon Pink
+$secondary: #ffdb58; // Bright Yellow
+$success: #00f764; // Neon Green
+$info: #40c4ff; // Lighter Cyan for better visibility
+$warning: #ffc107; // Amber for warning
+$danger: #ff5252; // Brighter red for better visibility
+$light: #b3b3b3; // Light gray for elements with light color
+$dark: #1a1a1a; // Very dark gray (almost black) for elements with dark color
 
-// Colors
-$body-bg: #0091ea;        // Bright Blue
-$primary: #ff6ad5;        // Neon Pink
-$secondary: #ffdb58;      // Bright Yellow
-$success: #00f764;        // Neon Green
-$info: #01cdfe;           // Bright Cyan
-$warning: #ff61a6;        // Pinkish
-$danger: #ff2965;         // Neon Red
-$light: #9A83D4;          // Pastel Purple
-$dark: #260e37;           // Dark Blueish Purple
+$link-color: #80d8ff; // Lighter cyan for links
+$link-hover-color: lighten($link-color, 10%);
 
-// Link Colors
-$link-color: #01cdfe;     // Bright Cyan
-$link-hover-color: darken($link-color, 10%);
+$card-bg: #242424; // Dark background for cards
+$card-cap-bg: #343434; // Even darker background for card headers and footers
+$card-border-color: #343434; // Border color for cards
 
 // Bootstrap Import
 @import '~bootstrap/scss/bootstrap.scss';
+
+.card {
+    margin-bottom: 1rem;
+    border: 1px solid $card-border-color;
+
+    &-header, &-footer {
+        background-color: $card-cap-bg;
+    }
+}
+
+// Enhance card shadow on hover
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba($dark, .15);
+}
+
+.list-group-item {
+    background-color: $card-bg;
+    color: $body-color;
+    border-color: $card-border-color;
+
+    &:hover {
+        background-color: darken($card-bg, 5%);
+    }
+}
