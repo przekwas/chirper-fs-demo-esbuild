@@ -1,8 +1,7 @@
-import { SelectQuery, ModifyQuery } from '../queryUtils';
 import { Table } from './tableCrud';
-import type { RowDataPacket } from 'mysql2';
+import type { IGenericRow } from './tableCrud';
 
-interface IChirpRow extends RowDataPacket {
+interface IChirpRow extends IGenericRow {
 	id: number;
 	user_id: number;
 	body: string;
@@ -28,10 +27,13 @@ export const chirpsService = {
 	insertChirp(newChirp: Partial<IChirpRow>) {
 		return chirpsTable.insert(newChirp);
 	},
-    updateChirp(updatedChirp: Partial<IChirpRow>, id: number) {
-        return chirpsTable.update(updatedChirp, id);
-    },
-    destroyChirp(id: number) {
-        return chirpsTable.destroy(id);
-    }
+	updateChirp(updatedChirp: Partial<IChirpRow>, id: number) {
+		return chirpsTable.update(updatedChirp, id);
+	},
+	destroyChirp(id: number) {
+		return chirpsTable.destroy(id);
+	},
+	destroyChirpsForUser(user_id: number) {
+		return chirpsTable.customQuery('DELETE FROM chirps WHERE user_id = ?', [user_id]);
+	}
 };

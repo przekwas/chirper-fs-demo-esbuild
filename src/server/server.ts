@@ -2,8 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import apiRouter from './routes';
-
-type HTTPError = Error & { status?: number };
+import { APIError } from './utils/apiError';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -32,23 +31,18 @@ if (isProduction) {
 }
 
 app.use((req, res, next) => {
-	const error: HTTPError = new Error(`Path ${req.originalUrl} not found`);
+	const error = new APIError(`Path ${req.originalUrl} not found`);
 	error.status = 404;
 	next(error);
 });
 
 app.use(
-	(error: HTTPError, req: express.Request, res: express.Response, next: express.NextFunction) => {
-		console.log(error);
+	(error: APIError, req: express.Request, res: express.Response, next: express.NextFunction) => {
+		console.error(error);
 		const status = error.status || 500;
 		const message = error.message || 'Internal server error';
 
-		return res.status(status).json({
-			error: {
-				message,
-				status
-			}
-		});
+		return res.status(status).json({ error: { message, status } });
 	}
 );
 

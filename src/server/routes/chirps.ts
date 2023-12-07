@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import db from '../db';
+import { APIError } from '../utils/apiError';
 
 const router = Router();
 
@@ -8,14 +9,14 @@ router.get('/:chirpid', async (req, res, next) => {
 		const chirpid = parseInt(req.params.chirpid, 10);
 
 		if (!chirpid) {
-			return res.status(400).json({ message: 'Invalid chirpid parameter' });
+			throw new APIError('Invalid chirpid parameter', 400);
 		}
 
 		const [chirp] = await db.chirpsService.getOneChirp(chirpid);
 
-        if (!chirp) {
-            return res.status(404).json({ message: 'Chirp not found' });
-        }
+		if (!chirp) {
+			throw new APIError('Chirp not found', 404);
+		}
 
 		res.json(chirp);
 	} catch (error) {
@@ -35,7 +36,7 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
 	try {
 		const newChirp = req.body;
-		newChirp.user_id = 6;
+		newChirp.user_id = 14;
 		const result = await db.chirpsService.insertChirp(newChirp);
 		res.json({ message: 'Chirp created', id: result.insertId });
 	} catch (error) {
@@ -48,14 +49,14 @@ router.put('/:chirpid', async (req, res, next) => {
 		const chirpid = parseInt(req.params.chirpid, 10);
 
 		if (!chirpid) {
-			return res.status(400).json({ message: 'Invalid chirpid parameter' });
+			throw new APIError('Invalid chirpid parameter', 400);
 		}
 
 		const updatedChirp = req.body;
 		const result = await db.chirpsService.updateChirp(updatedChirp, chirpid);
 
 		if (!result.affectedRows) {
-			return res.status(404).json({ message: 'Chirp not found' });
+			throw new APIError('Chirp not found', 404);
 		}
 
 		res.json({ message: 'Chirp updated', id: chirpid });
@@ -69,13 +70,13 @@ router.delete('/:chirpid', async (req, res, next) => {
 		const chirpid = parseInt(req.params.chirpid, 10);
 
 		if (!chirpid) {
-			return res.status(400).json({ message: 'Invalid chirpid parameter' });
+			throw new APIError('Invalid chirpid parameter', 400);
 		}
 
 		const result = await db.chirpsService.destroyChirp(chirpid);
 
 		if (!result.affectedRows) {
-			return res.status(404).json({ message: 'Chirp not found' });
+			throw new APIError('Chirp not found', 404);
 		}
 
 		res.json({ message: 'Chirp destroyed', id: chirpid });
