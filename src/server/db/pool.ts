@@ -1,10 +1,8 @@
 import { createPool } from 'mysql2/promise';
+import config from '../config';
 
 const pool = createPool({
-	host: 'localhost',
-	user: 'chirper_demo_official_user',
-	password: 'password123',
-	database: 'chirper_demo_official',
+	...config.mysql,
 	connectionLimit: 10,
 	timezone: 'Z',
 	dateStrings: true
