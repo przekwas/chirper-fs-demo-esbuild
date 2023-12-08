@@ -39,11 +39,7 @@ router.delete('/chirp/:chirp_id', async (req, res, next) => {
 			throw new APIError('Invalid chirp_id parameter', 400);
 		}
 
-		const result = await db.mentionsService.destroyMentionForChirpId(chirp_id);
-
-		if (!result.affectedRows) {
-			throw new APIError('Mention chirp_id not found', 404);
-		}
+		await db.mentionsService.destroyMentionForChirpId(chirp_id);
 
 		res.json({ message: 'Mention destroyed' });
 	} catch (error) {
