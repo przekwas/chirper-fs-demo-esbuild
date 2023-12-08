@@ -5,7 +5,7 @@ import Home, { homeLoader } from './views/Home';
 import Details, { detailsLoader } from './views/Details';
 import User, { userLoader } from './views/User';
 import Compose, { composeLoader } from './views/Compose';
-import Admin from './views/Admin';
+import Admin, { adminLoader } from './views/Admin';
 
 interface AppProps {}
 
@@ -35,6 +35,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/admin',
+				loader: adminLoader,
 				element: <Admin />
 			}
 		]

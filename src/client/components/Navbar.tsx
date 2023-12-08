@@ -1,6 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaPenFancy, FaUserShield } from 'react-icons/fa';
+import {
+	FaHome,
+	FaPenFancy,
+	FaUserShield,
+	FaMusic,
+	FaCoffee,
+	FaBook,
+	FaCamera,
+	FaGamepad
+} from 'react-icons/fa';
 
 const TrendingSidebar = () => {
 	return (
@@ -40,19 +49,44 @@ const TrendingSidebar = () => {
 				</div>
 				<div className="offcanvas-body">
 					<ul className="navbar-nav">
-						<li className="nav-item">
+						<li className="nav-item fs-2 mb-4">
 							<NavLink className="nav-link" to="/">
 								<FaHome className="me-2" /> Home
 							</NavLink>
 						</li>
-						<li className="nav-item">
+						<li className="nav-item fs-2 mb-4">
 							<NavLink className="nav-link" to="/compose">
 								<FaPenFancy className="me-2" /> Compose
 							</NavLink>
 						</li>
-						<li className="nav-item">
+						<li className="nav-item fs-2 mb-4">
 							<NavLink className="nav-link" to="/admin">
 								<FaUserShield className="me-2" /> Admin
+							</NavLink>
+						</li>
+						<li className="nav-item fs-2 mb-4">
+							<NavLink className="nav-link" to="/">
+								<FaMusic className="me-2" /> Music
+							</NavLink>
+						</li>
+						<li className="nav-item fs-2 mb-4">
+							<NavLink className="nav-link" to="/">
+								<FaCoffee className="me-2" /> Shop
+							</NavLink>
+						</li>
+						<li className="nav-item fs-2 mb-4">
+							<NavLink className="nav-link" to="/">
+								<FaBook className="me-2" /> Trends
+							</NavLink>
+						</li>
+						<li className="nav-item fs-2 mb-4">
+							<NavLink className="nav-link" to="/">
+								<FaCamera className="me-2" /> Media
+							</NavLink>
+						</li>
+						<li className="nav-item fs-2 mb-4">
+							<NavLink className="nav-link" to="/">
+								<FaGamepad className="me-2" /> Apps
 							</NavLink>
 						</li>
 					</ul>
@@ -62,19 +96,45 @@ const TrendingSidebar = () => {
 			{/* Side Column for md and larger screens */}
 			<div className="d-none d-md-block text-white vh-100">
 				<ul className="nav flex-column">
-					<li className="nav-item">
+					<li className="nav-item text-center">
 						<NavLink className="nav-link" to="/">
-							<FaHome className="me-2" /> Home
+							<FaHome size={30} className="mb-5" />
 						</NavLink>
 					</li>
-					<li className="nav-item">
+					<li className="nav-item text-center">
 						<NavLink className="nav-link" to="/compose">
-							<FaPenFancy className="me-2" /> Compose
+							<FaPenFancy size={30} className="mb-5" />
 						</NavLink>
 					</li>
-					<li className="nav-item">
+					<li className="nav-item text-center">
 						<NavLink className="nav-link" to="/admin">
-							<FaUserShield className="me-2" /> Admin
+							<FaUserShield size={30} className="mb-5" />
+						</NavLink>
+					</li>
+					{/* Additional fake links */}
+					<li className="nav-item text-center">
+						<NavLink className="nav-link" to="/">
+							<FaMusic size={30} className="mb-5" />
+						</NavLink>
+					</li>
+					<li className="nav-item text-center">
+						<NavLink className="nav-link" to="/">
+							<FaCoffee size={30} className="mb-5" />
+						</NavLink>
+					</li>
+					<li className="nav-item text-center">
+						<NavLink className="nav-link" to="/">
+							<FaBook size={30} className="mb-5" />
+						</NavLink>
+					</li>
+					<li className="nav-item text-center">
+						<NavLink className="nav-link" to="/">
+							<FaCamera size={30} className="mb-5" />
+						</NavLink>
+					</li>
+					<li className="nav-item text-center">
+						<NavLink className="nav-link" to="/">
+							<FaGamepad size={30} className="mb-5" />
 						</NavLink>
 					</li>
 				</ul>

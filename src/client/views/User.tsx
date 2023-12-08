@@ -25,15 +25,15 @@ const User = (props: UserProps) => {
 
 	return (
 		<>
-			<h1>@{userHistory[0].handle}</h1>
-			<div className="btn-group mb-4">
+			<h4>@{userHistory[0].handle}</h4>
+			<div className="btn-group mb-4 w-100">
 				<button
-					className={`btn ${toggle.showHistory ? 'btn-primary' : 'btn-outline-primary'}`}
+					className={`btn btn-sm ${toggle.showHistory ? 'btn-primary' : 'btn-outline-primary'}`}
 					onClick={() => setToggle({ showHistory: true, showMentions: false })}>
 					History
 				</button>
 				<button
-					className={`btn ${toggle.showMentions ? 'btn-primary' : 'btn-outline-primary'}`}
+					className={`btn btn-sm ${toggle.showMentions ? 'btn-primary' : 'btn-outline-primary'}`}
 					onClick={() => setToggle({ showHistory: false, showMentions: true })}>
 					Mentions
 				</button>
@@ -73,7 +73,7 @@ const User = (props: UserProps) => {
 								</div>
 								<div className="card-footer text-muted">
 									In chirp{' '}
-									<Link to={`/chirps/${mention.chirp_id}`}>
+									<Link to={`/chirps/${mention.chirp_id}`} className='text-secondary'>
 										#{mention.chirp_id}
 									</Link>
 								</div>

@@ -4,6 +4,18 @@ import { APIError } from '../utils/apiError';
 
 const router = Router();
 
+router.get('/featured', async (req, res, next) => {
+	try {
+		const users = await db.usersService.getAllUsers();
+		const featuredFive = users
+			.filter(user => user.id % 3 === 0 || user.id % 5 === 0)
+			.slice(0, 5);
+		res.json(featuredFive);
+	} catch (error) {
+		next(error);
+	}
+});
+
 router.get('/:userid', async (req, res, next) => {
 	try {
 		const userid = parseInt(req.params.userid, 10);
