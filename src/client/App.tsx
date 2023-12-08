@@ -24,6 +24,11 @@ const router = createBrowserRouter([
 				loader: detailsLoader
 			},
 			{
+				path: '/users/:userid',
+				element: <User />,
+				loader: userLoader
+			},
+			{
 				path: 'compose',
 				element: <Compose />
 			},
