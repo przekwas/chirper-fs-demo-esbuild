@@ -20,7 +20,7 @@ $card-border-color: #343434; // Border color for cards
 @import '~bootstrap/scss/bootstrap.scss';
 
 .card {
-    margin-bottom: 1rem;
+    margin-bottom: 0.25rem;
     border: 1px solid $card-border-color;
 
     &-header, &-footer {
@@ -28,7 +28,6 @@ $card-border-color: #343434; // Border color for cards
     }
 }
 
-// Enhance card shadow on hover
 .card:hover {
     box-shadow: 0 0.5rem 1rem rgba($dark, .15);
 }
@@ -41,4 +40,14 @@ $card-border-color: #343434; // Border color for cards
     &:hover {
         background-color: darken($card-bg, 5%);
     }
+}
+
+.handle-link {
+    color: inherit; 
+    text-decoration: none;
+}
+
+.handle-link:hover, .handle-link:focus {
+    text-decoration: underline;
+    color: $link-color;
 }

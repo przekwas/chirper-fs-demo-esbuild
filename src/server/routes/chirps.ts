@@ -25,12 +25,20 @@ router.get('/:chirpid', async (req, res, next) => {
 });
 
 router.get('/', async (req, res, next) => {
-	try {
-		const chirps = await db.chirpsService.getAllChirps();
-		res.json(chirps);
-	} catch (error) {
-		next(error);
-	}
+    try {
+        const user_id = parseInt(req.query.user_id as string, 10);
+        let chirps;
+        
+        if (user_id) {
+            chirps = await db.chirpsService.getChirpsForUserId(user_id);
+        } else {
+            chirps = await db.chirpsService.getAllChirps();
+        }
+        
+        res.json(chirps);
+    } catch (error) {
+        next(error);
+    }
 });
 
 router.post('/', async (req, res, next) => {

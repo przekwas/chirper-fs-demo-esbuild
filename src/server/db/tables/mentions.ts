@@ -32,7 +32,8 @@ export const mentionsService = {
 			chirps.body as body,
 			mentionedUser.id AS mentioned_user_id,
 			mentionedUser.handle AS mentioned_user_handle,
-			authorUser.handle AS author_handle
+			authorUser.handle AS author_handle,
+			authorUser.id AS author_id
 		FROM mentions
 			JOIN chirps ON chirps.id = mentions.chirp_id
 			JOIN users AS mentionedUser ON mentionedUser.id = mentions.user_id

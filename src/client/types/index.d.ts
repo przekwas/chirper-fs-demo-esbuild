@@ -7,3 +7,12 @@ export interface IChirp {
     handle: string;
     email: string;
 }
+
+export interface IChirpMention {
+    chirp_id: number;
+    body: string;
+    mentioned_user_id: number;
+    mentioned_user_handle: string;
+    author_handle: string;
+    author_id: number;
+}

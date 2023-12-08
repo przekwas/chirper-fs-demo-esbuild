@@ -18,6 +18,21 @@ export const chirpsService = {
 			extraQuery: 'JOIN users ON users.id = chirps.user_id ORDER BY chirps.created_at DESC'
 		});
 	},
+	getChirpsForUserId(user_id: number) {
+		return chirpsTable.customQuery(
+			`
+		SELECT 
+			chirps.*, 
+			users.handle,
+			users.email
+		FROM chirps
+		JOIN users ON users.id = chirps.user_id
+		WHERE chirps.user_id = ?
+		ORDER BY chirps.created_at DESC
+		`,
+			[user_id]
+		);
+	},
 	getOneChirp(id: number) {
 		return chirpsTable.getOne(id, {
 			columns: 'chirps.*, users.handle, users.email',
