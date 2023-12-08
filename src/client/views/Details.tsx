@@ -23,12 +23,7 @@ const Details = (props: DetailsProps) => {
 	};
 
 	return (
-		<div className="container mt-4">
-			<button
-				className="btn btn-light mb-2"
-				onClick={handleBackClick}>
-				Back
-			</button>
+		<>
 			<div className="card">
 				<div className="card-header">
 					<Link to={`/users/${chirp.user_id}`} className="handle-link">
@@ -37,7 +32,7 @@ const Details = (props: DetailsProps) => {
 					<br />
 					<small className="text-muted">{chirp.email}</small>
 				</div>
-				<div className="card-body">
+				<div className="card-body py-5">
 					<p className="card-text">{chirp.body}</p>
 				</div>
 				<div className="card-footer text-muted">
@@ -47,7 +42,10 @@ const Details = (props: DetailsProps) => {
 					</small>
 				</div>
 			</div>
-		</div>
+			<button className="btn btn-light mt-2" onClick={handleBackClick}>
+				Back
+			</button>
+		</>
 	);
 };
 

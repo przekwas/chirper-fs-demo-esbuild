@@ -16,3 +16,10 @@ export interface IChirpMention {
     author_handle: string;
     author_id: number;
 }
+
+export interface IUser {
+    id: number;
+    handle: string;
+    email: string;
+    created_at: string;
+}

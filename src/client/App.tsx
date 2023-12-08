@@ -4,7 +4,7 @@ import Root from './views/Root';
 import Home, { homeLoader } from './views/Home';
 import Details, { detailsLoader } from './views/Details';
 import User, { userLoader } from './views/User';
-import Compose from './views/Compose';
+import Compose, { composeLoader } from './views/Compose';
 import Admin from './views/Admin';
 
 interface AppProps {}
@@ -30,7 +30,8 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'compose',
-				element: <Compose />
+				element: <Compose />,
+				loader: composeLoader
 			},
 			{
 				path: '/admin',

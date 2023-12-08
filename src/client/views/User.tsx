@@ -24,8 +24,8 @@ const User = (props: UserProps) => {
 	const [toggle, setToggle] = useState({ showHistory: true, showMentions: false });
 
 	return (
-		<div className="container mt-4">
-			<h1>User Profile</h1>
+		<>
+			<h1>@{userHistory[0].handle}</h1>
 			<div className="btn-group mb-4">
 				<button
 					className={`btn ${toggle.showHistory ? 'btn-primary' : 'btn-outline-primary'}`}
@@ -47,7 +47,7 @@ const User = (props: UserProps) => {
 									<br />
 									<small className="text-muted">{chirp.email}</small>
 								</div>
-								<div className="card-body">
+								<div className="card-body py-5">
 									<p className="card-text">{chirp.body}</p>
 								</div>
 								<div className="card-footer text-muted">
@@ -68,7 +68,7 @@ const User = (props: UserProps) => {
 										@{mention.author_handle}
 									</Link>
 								</div>
-								<div className="card-body">
+								<div className="card-body py-5">
 									<p className="card-text">{mention.body}</p>
 								</div>
 								<div className="card-footer text-muted">
@@ -80,7 +80,7 @@ const User = (props: UserProps) => {
 							</div>
 					  ))}
 			</div>
-		</div>
+		</>
 	);
 };
 

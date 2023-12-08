@@ -21,7 +21,8 @@ export const mentionsService = {
 			extraQuery: `
 				JOIN chirps ON chirps.id = mentions.chirp_id
 				JOIN users AS mentionedUser ON mentionedUser.id = mentions.user_id
-				JOIN users AS authorUser ON authorUser.id = chirps.user_id`
+				JOIN users AS authorUser ON authorUser.id = chirps.user_id
+				ORDER BY chirps.created_at DESC`
 		});
 	},
 	getAllMentionsForUserId(user_id: number) {
@@ -39,6 +40,7 @@ export const mentionsService = {
 			JOIN users AS mentionedUser ON mentionedUser.id = mentions.user_id
 			JOIN users AS authorUser ON authorUser.id = chirps.user_id
 		WHERE mentions.user_id = ?
+		ORDER BY chirps.created_at DESC
 		`,
 			[user_id]
 		);
